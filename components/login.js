@@ -35,7 +35,7 @@ class Login extends React.Component{
     }
     render(){
         return (
-            <div>
+            <div className="jumbotron">
                 <input type="text" placeholder="enter ozmenta id" onChange={this.setName}/>
                 <input type="password" placeholder="password" onChange={this.setPass}/>
                 <button type="submit" onClick={this.show}>Login</button>

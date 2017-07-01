@@ -2,20 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Index from './components/index'
 import Login from './components/login'
+import Nav from './components/nav'
+import Dashboard from './components/dashboard'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 class App extends React.Component {
-    add(a,b){
-        return a+b;
-    }
   render () {
-    return <p> Hello React! {this.add("shiva","kishore")}</p>;
+    return <p> Hello React!</p>;
   }
 }
 
 ReactDOM.render(
-    <span>
-        <App/>
-        <Login/>
-    </span>
+    <Router>
+       <span>
+         <Nav/>
+         <Dashboard />
+         <div>
+           <Route exact path="/" component={App}/>
+           <Route path="/login" component={Login}/>
+           <Route path="/index" component={Index}/>
+         </div>
+       </span>
+     </Router>
     ,
     document.getElementById('app')
 );
