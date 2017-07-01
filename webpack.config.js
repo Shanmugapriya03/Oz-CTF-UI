@@ -1,13 +1,9 @@
-var webpack = require('webpack');
 var path = require('path');
+var webpack = require('webpack');
 
-
-var config = {
+module.exports = {
   entry: './app.js',
-  output: {
-    path: __dirname,
-    filename: 'bundle.js'
-  },
+  output: { path: __dirname, filename: 'bundle.js' },
   watch: true,
   module: {
     loaders: [
@@ -22,5 +18,3 @@ var config = {
     ]
   }
 };
-
-module.exports = config;
