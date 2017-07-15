@@ -25,12 +25,14 @@ export default class Dashboard extends React.Component{
     }
     renderContent(){
         if (this.state.selected != null){
-
             return (
                 <h1> {this.state.selected }</h1>
             );
-        }
-        return null;
+        }else{
+			return (
+				<h3>Select a challenge to get started</h3>
+			);
+		}
     }
     renderScore(){
         var tot=0;
