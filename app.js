@@ -4,6 +4,7 @@ import Index from './components/index'
 import Login from './components/login'
 import Nav from './components/nav'
 import Dashboard from './components/dashboard'
+import Welcome from './components/welcome'
 import {
   BrowserRouter as Router,
   Route,
@@ -11,15 +12,14 @@ import {
 } from 'react-router-dom'
 class App extends React.Component {
   render () {
-    return <p> Hello React!</p>;
+    return <p></p>;
   }
 }
 
 ReactDOM.render(
     <Router>
        <span>
-         <Nav/>
-         <Dashboard />
+         <Welcome/>
          <div>
            <Route exact path="/" component={App}/>
            <Route path="/login" component={Login}/>
