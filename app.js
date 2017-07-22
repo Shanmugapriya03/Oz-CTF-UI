@@ -19,7 +19,8 @@ class App extends React.Component {
 ReactDOM.render(
     <Router>
        <span>
-         <Welcome/>
+       <Nav/>
+       <Dashboard/>
          <div>
            <Route exact path="/" component={App}/>
            <Route path="/login" component={Login}/>

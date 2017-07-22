@@ -3,5 +3,9 @@
     }
 body{
     background-color: white;
-    
+
+}
+.navbar{
+    background-color: #314669;
+    border-radius: 0px;
 }

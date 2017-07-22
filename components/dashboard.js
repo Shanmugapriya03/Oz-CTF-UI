@@ -1,5 +1,6 @@
 import React from 'react';
 import ChallengeItem from './challengeItem'
+import Timer from './timer';
 export default class Dashboard extends React.Component{
     constructor(){
         super();
@@ -9,7 +10,6 @@ export default class Dashboard extends React.Component{
             ],
             selected:null
         };
-
 
         this.renderItems = this.renderItems.bind(this);
         this.renderContent = this.renderContent.bind(this);
@@ -58,6 +58,7 @@ export default class Dashboard extends React.Component{
                         </div>
 
                         <div className="col-md-2">
+                            <Timer/>
                             <b>Total Score</b>
                             {this.renderScore()}
                         </div>
