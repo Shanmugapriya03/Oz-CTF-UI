@@ -4,10 +4,16 @@ export default class ChallengeItem extends React.Component {
     render(){
         return (
             <div>
-                <h3 onClick={()=>this.props.setSelected(this.props.content,this.props.question)}>
-                    {this.props.name}
-                </h3>
-                <span>{this.props.score}</span>
+                <div className="challenge">
+                    <h3 onClick={()=>this.props.setSelected(this.props.content,this.props.question)}>
+                        {this.props.name}
+                    </h3>
+                </div>
+                <div className="score">
+                    <div className="glyphicon glyphicon-star"></div>
+                    <span>{this.props.score} pts</span>
+                </div>
+                <hr/>
             </div>
         );
     }

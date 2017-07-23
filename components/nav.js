@@ -6,7 +6,7 @@ export default class Nav extends React.Component{
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="#">WebSiteName</a>
+                            <a className="navbar-brand" href="#">OZ_CTF</a>
                     </div>
                     <ul className="nav navbar-nav navbar-right">
                             <Link to="/login" className="btn btn-danger navbar-btn">login</Link>

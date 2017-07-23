@@ -41,18 +41,7 @@ export default class Timer extends React.Component{
             <div className="timer">
                 <div className="clockdiv">
                       <div>
-                        <span className="hours">{this.state.currentHour}</span>
-                        <div className="smalltext">Hours</div>
-                      </div>
-                      <br/>
-                      <div>
-                        <span className="minutes">{this.state.currentMin}</span>
-                        <div className="smalltext">Minutes</div>
-                      </div>
-                      <br/>
-                      <div>
-                        <span className="seconds">{this.state.currentSec}</span>
-                        <div className="smalltext">Seconds</div>
+                        <span>{this.state.currentHour} H: {this.state.currentMin} M: {this.state.currentSec} S</span>
                       </div>
                 </div>
             </div>

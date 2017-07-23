@@ -2,6 +2,7 @@
     padding-top: 200px;
     }
 body{
+    font-family: sans-serif;
     background-color: white;
 
 }
@@ -18,7 +19,10 @@ body{
     height:100%;
     overflow-y: auto;
 }
-
+.heading{
+    text-align: center;
+    color: #5675B9;
+}
 .question{
     height: 30%;
 }
@@ -29,32 +33,50 @@ body{
 .select{
     padding-left:30%;
     padding-top:20%;
+    color:#5675B9;
+}
+.challenge{
+    cursor: pointer;
+    cursor: hand;
+}
+.score{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 1000;
+    background:#5675B9;
+}
+.tot{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 1000;
+    color:#5675B9;
+}
+.totscore{
+    text-align: center;
+    font-size: 20px;
+    font-weight: 1000;
+    color:white;
+    background-color:#5675B9;
 }
 .clockdiv{
-	font-family: sans-serif;
 	color:  white;
 	display: inline-block;
 	font-weight: 100;
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
 }
 
 .clockdiv > div{
 	padding: 10px;
-	border-radius: 3px;
+    border-radius: 3px;
 	background: #323754;
 }
 
 .clockdiv div > span{
-	padding: 15px;
+	padding: 5px;
 	border-radius: 3px;
 	background: #5675B9;
 	display: inline-block;
-}
-
-.smalltext{
-	padding-top: 5px;
-	font-size: 16px;
 }
 .timer{
     padding-top: 5%;

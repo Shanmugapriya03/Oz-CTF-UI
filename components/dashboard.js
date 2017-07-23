@@ -7,8 +7,8 @@ export default class Dashboard extends React.Component{
         this.state = {
             challenges: [
                 {name:"Challenge 1", score:"100" ,content:"challenges--1",question:"Question----1 goes here........."},
-                {name:"ch2", score:"1000" ,content:"challenges--2",question:"Question----2 goes here........."},
-                {name:"ch3",score:"500" ,content:"challenges--3",question:"Question----3 goes here........."},
+                {name:"Challenge 2", score:"1000" ,content:"challenges--2",question:"Question----2 goes here........."},
+                {name:"Challenge 3",score:"500" ,content:"challenges--3",question:"Question----3 goes here........."},
             ],
             selected:null,
             question:null
@@ -31,15 +31,15 @@ export default class Dashboard extends React.Component{
             return (
                 <div>
                     <div className="heading">
-                        <h1 className=""> {this.state.selected }</h1>
+                        <h1> {this.state.selected }</h1>
                     </div>
                     <div className="well well-lg question">
                         <p>{this.state.question}</p>
                     </div>
-                    <div className="form-group col-lg-12">
-                        <label for="code">Type Your Answer Here:</label>
-                        <input type="text" className="form-control" />
+                    <div className="form-group col-lg-10">
+                        <input type="text" className="form-control" placeholder="Enter flag here"></input>
                     </div>
+                    <button type="button" className="btn btn-default btn-primary btn-lg" >submit</button>
                 </div>
             );
         }else{
@@ -64,7 +64,7 @@ export default class Dashboard extends React.Component{
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-2  verNav list-scroll">
-                            <div className="col-md-offset-1 col-md-10 col-md-offset-1">
+                            <div className="col-md-offset-1">
                                 {this.renderItems()}
                             </div>
                         </div>
@@ -74,11 +74,11 @@ export default class Dashboard extends React.Component{
                         </div>
 
                         <div className="col-md-2">
-                            <div className="col-md-offset-5">
                                 <Timer/>
-                                <b>Total Score</b>
-                                {this.renderScore()}
-                            </div>
+                                <br/>
+                                <div className="tot">Total Score</div>
+                                <div className="totscore"> {this.renderScore()}</div>
+                                <br/>
                         </div>
                     </div>
                 </div>
