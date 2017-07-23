@@ -9,26 +9,27 @@ export default class Dashboard extends React.Component{
             challenges: [
                 {name:"Challenge 1", score:"100" ,content:"challenges--1",question:"Question----1 goes here.........",
                 hint:[
-                    {hname:"hint 1",def:"hint defined"}
+                    {hname:"hint 1",pointLoss:20}
                     ]
                 },
                 {name:"Challenge 2", score:"1000" ,content:"challenges--2",question:"Question----2 goes here.........",
                     hint:[
-                        {hname:"hint 1",def:"hint defined"},
-                        {hname:"hint 2",def:"hint defined"}
+                        {hname:"hint 1",pointLoss:30},
+                        {hname:"hint 2",pointLoss:25}
                     ]
                 },
                 {name:"Challenge 3",score:"500" ,content:"challenges--3",question:"Question----3 goes here.........",
                     hint:[
-                        {hname:"hint 1",def:"hint defined"},
-                        {hname:"hint 2",def:"hint defined"},
-                        {hname:"hint 3",def:"hint defined"}
+                        {hname:"hint 1",pointLoss:45},
+                        {hname:"hint 2",pointLoss:5},
+                        {hname:"hint 3",pointLoss:10}
                         ]
                 },
             ],
             selected:null,
             question:null,
-            eachScore:null
+            eachScore:null,
+			hints:null
         };
 
         this.renderItems = this.renderItems.bind(this);
@@ -37,13 +38,14 @@ export default class Dashboard extends React.Component{
         this.setSelected = this.setSelected.bind(this);
         this.renderHint= this.renderHint.bind(this);
     }
-    renderHint(val){
+    renderHint(){
         var hints=[];
-            for(let i in val){
-                console.log(val[i].hname);
-                console.log(val[i].def);
-                hints.push(<HintItem hname={val[i].hname} def={val[i].def}/>);
-            }
+		let val = this.state.hints;
+        for(let i in val){
+            console.log(val[i].hname);
+            console.log(val[i].pointLoss);
+            hints.push(<HintItem hname={val[i].hname} pointLoss={val[i].pointLoss}/>);
+        }
         return hints;
     }
     renderItems(){
@@ -82,9 +84,8 @@ export default class Dashboard extends React.Component{
         }
         return tot;
     }
-    setSelected(val1,val2,val3,val4){
-        this.setState({selected:val1,question:val2,eachScore:val3});
-        this.renderHint(val4);
+    setSelected(content, question, score, hint){
+        this.setState({selected:content, question:question, eachScore:score, hints:hint});
     }
     render(){
         return (
@@ -107,7 +108,7 @@ export default class Dashboard extends React.Component{
                                 <div className="tot">Total Score</div>
                                 <div className="totscore"> {this.renderScore()}</div>
                                 <br/>
-                                {this.renderHint()}
+								{this.renderHint()}
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@ export default class HintItem extends React.Component{
         return(
             <div>
                 <h4>{this.props.hname}</h4>
-                <p>{this.props.def}</p>
+                <p>PointLoss : {this.props.pointLoss}</p>
             </div>
         )
     }
