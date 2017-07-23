@@ -6,9 +6,9 @@ export default class Dashboard extends React.Component{
         super();
         this.state = {
             challenges: [
-                {name:"ch1", score:"100" ,content:"challenges--1",question:"Question----1 goes here........."},
+                {name:"Challenge 1", score:"100" ,content:"challenges--1",question:"Question----1 goes here........."},
                 {name:"ch2", score:"1000" ,content:"challenges--2",question:"Question----2 goes here........."},
-                {name:"ch3",score:"500" ,content:"challenges--3",question:"Question----3 goes here........."}
+                {name:"ch3",score:"500" ,content:"challenges--3",question:"Question----3 goes here........."},
             ],
             selected:null,
             question:null
@@ -34,7 +34,7 @@ export default class Dashboard extends React.Component{
                     <p>{this.state.question}</p>
                         <div class="form-group">
                             <label for="comment">Answer:</label>
-                            <textarea class="form-control" rows="10" cols="10" id="comment"></textarea>
+                            <input class="form-control"></input>
                         </div>
                 </div>
             );
@@ -59,11 +59,13 @@ export default class Dashboard extends React.Component{
             <span>
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-3">
-                            {this.renderItems()}
+                        <div className="col-md-2  verNav list-scroll">
+                            <div className="col-md-offset-1 col-md-10 col-md-offset-1">
+                                {this.renderItems()}
+                            </div>
                         </div>
 
-                        <div className="col-md-7">
+                        <div className="col-md-8">
                             {this.renderContent()}
                         </div>
 

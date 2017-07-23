@@ -6,6 +6,15 @@ body{
 
 }
 .navbar{
-    background-color: #314669;
+    background-color: #323754;
     border-radius: 0px;
+    margin-bottom: 0px;
+}
+.verNav{
+    background-color: #323754;
+    color:white;
+}
+.list-scroll{
+    height:100%;
+    overflow-y: auto;
 }
