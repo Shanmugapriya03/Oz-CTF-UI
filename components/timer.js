@@ -38,8 +38,23 @@ export default class Timer extends React.Component{
     render(){
 
         return(
-            <div>
-                <p>{this.state.currentHour}H: {this.state.currentMin}M: {this.state.currentSec}S</p>
+            <div className="timer">
+                <div className="clockdiv">
+                      <div>
+                        <span className="hours">{this.state.currentHour}</span>
+                        <div className="smalltext">Hours</div>
+                      </div>
+                      <br/>
+                      <div>
+                        <span className="minutes">{this.state.currentMin}</span>
+                        <div className="smalltext">Minutes</div>
+                      </div>
+                      <br/>
+                      <div>
+                        <span className="seconds">{this.state.currentSec}</span>
+                        <div className="smalltext">Seconds</div>
+                      </div>
+                </div>
             </div>
         );
     }

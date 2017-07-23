@@ -18,3 +18,44 @@ body{
     height:100%;
     overflow-y: auto;
 }
+
+.question{
+    height: 30%;
+}
+.content{
+    padding-left:5%;
+    padding-top:5%;
+}
+.select{
+    padding-left:30%;
+    padding-top:20%;
+}
+.clockdiv{
+	font-family: sans-serif;
+	color:  white;
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+}
+
+.clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	background: #323754;
+}
+
+.clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+	background: #5675B9;
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+.timer{
+    padding-top: 5%;
+}

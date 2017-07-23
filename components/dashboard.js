@@ -30,17 +30,21 @@ export default class Dashboard extends React.Component{
         if (this.state.selected != null){
             return (
                 <div>
-                    <h1> {this.state.selected }</h1>
-                    <p>{this.state.question}</p>
-                        <div class="form-group">
-                            <label for="comment">Answer:</label>
-                            <input class="form-control"></input>
-                        </div>
+                    <div className="heading">
+                        <h1 className=""> {this.state.selected }</h1>
+                    </div>
+                    <div className="well well-lg question">
+                        <p>{this.state.question}</p>
+                    </div>
+                    <div className="form-group col-lg-12">
+                        <label for="code">Type Your Answer Here:</label>
+                        <input type="text" className="form-control" />
+                    </div>
                 </div>
             );
         }else{
 			return (
-				<h3>Select a challenge to get started</h3>
+				<h3 className="select">Select a challenge to get started</h3>
 			);
 		}
     }
@@ -65,14 +69,16 @@ export default class Dashboard extends React.Component{
                             </div>
                         </div>
 
-                        <div className="col-md-8">
+                        <div className="col-md-8 content">
                             {this.renderContent()}
                         </div>
 
                         <div className="col-md-2">
-                            <Timer/>
-                            <b>Total Score</b>
-                            {this.renderScore()}
+                            <div className="col-md-offset-5">
+                                <Timer/>
+                                <b>Total Score</b>
+                                {this.renderScore()}
+                            </div>
                         </div>
                     </div>
                 </div>
