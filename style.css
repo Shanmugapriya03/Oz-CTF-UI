@@ -93,3 +93,19 @@ body{
     color:white;
 
 }
+.leader{
+    color:#5675B9;
+    text-align: center;
+}
+.board{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 10%;
+}
+table,th,tr,thead,tbody,td{
+    text-align: center;
+}
+table{
+    background-color:#5675B9; 
+    color: #323754;
+}

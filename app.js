@@ -5,6 +5,7 @@ import Login from './components/login'
 import Nav from './components/nav'
 import Dashboard from './components/dashboard'
 import Welcome from './components/welcome'
+import LeaderBoard from './components/leaderBoard'
 import {
   BrowserRouter as Router,
   Route,
@@ -24,6 +25,7 @@ ReactDOM.render(
          <div>
            <Route exact path="/" component={App}/>
            <Route path="/login" component={Login}/>
+           <Route path="/leaderBoard" component={LeaderBoard}/>
            <Route path="/index" component={Index}/>
          </div>
        </span>
