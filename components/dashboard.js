@@ -11,20 +11,20 @@ export default class Dashboard extends React.Component{
             challenges: [
                 {name:"Challenge 1", score:"100" ,content:"challenges--1",question:"Question----1 goes here.........",
                 hint:[
-                    {hname:"hint 1",pointLoss:20}
+                    {hname:"Hint 1",pointLoss:20}
                     ]
                 },
                 {name:"Challenge 2", score:"1000" ,content:"challenges--2",question:"Question----2 goes here.........",
                     hint:[
-                        {hname:"hint 1",pointLoss:30},
-                        {hname:"hint 2",pointLoss:25}
+                        {hname:"Hint 1",pointLoss:30},
+                        {hname:"Hint 2",pointLoss:25}
                     ]
                 },
                 {name:"Challenge 3",score:"500" ,content:"challenges--3",question:"Question----3 goes here.........",
                     hint:[
-                        {hname:"hint 1",pointLoss:45},
-                        {hname:"hint 2",pointLoss:5},
-                        {hname:"hint 3",pointLoss:10}
+                        {hname:"Hint 1",pointLoss:45},
+                        {hname:"Hint 2",pointLoss:5},
+                        {hname:"Hint 3",pointLoss:10}
                         ]
                 },
             ],
@@ -44,8 +44,6 @@ export default class Dashboard extends React.Component{
         var hints=[];
 		let val = this.state.hints;
         for(let i in val){
-            console.log(val[i].hname);
-            console.log(val[i].pointLoss);
             hints.push(<HintItem hname={val[i].hname} pointLoss={val[i].pointLoss}/>);
         }
         return hints;
@@ -123,7 +121,10 @@ export default class Dashboard extends React.Component{
                                 <div className="tot">Total Score</div>
                                 <div className="totscore"> {this.renderScore()}</div>
                                 <br/>
-								{this.renderHint()}
+                                <div className="hints">HINTS
+                                {this.renderHint()}
+                                </div>
+
                         </div>
                     </div>
                 </div>

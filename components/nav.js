@@ -10,6 +10,7 @@ export default class Nav extends React.Component{
                     </div>
                     <ul className="nav navbar-nav navbar-right">
                             <Link to="/login" className="btn btn-danger navbar-btn">login</Link>
+                            <Link to="/leaderBoard" className="btn btn-primary navbar-btn">LeaderBoard</Link>
                     </ul>
                 </div>
             </nav>
