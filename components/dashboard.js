@@ -2,6 +2,8 @@ import React from 'react';
 import ChallengeItem from './challengeItem'
 import Timer from './timer';
 import HintItem from './hintItem';
+import axios from 'axios';
+import * as constants from '../constants';
 export default class Dashboard extends React.Component{
     constructor(){
         super();
@@ -55,12 +57,25 @@ export default class Dashboard extends React.Component{
         }
         return items;
     }
+	componentWillMount(){
+		let self = this;
+		axios.get(constants.BASE_URL+'/listChallenges')
+			.then(function (response) {
+				console.log(response);
+				if (response.data.Message == "success"){
+					self.setState({challenges:response.data.Data});
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	}
     renderContent(){
         if (this.state.selected != null){
             return (
                 <div>
                     <div className="heading">
-                        <h1> {this.state.selected }<span className="badge">{this.state.eachScore} pts</span></h1>
+                        <h1>{this.state.selected} <span className="badge">{this.state.eachScore} pts</span></h1>
                     </div>
                     <div className="well well-lg question">
                         <p>{this.state.question}</p>

@@ -5,7 +5,7 @@ export default class ChallengeItem extends React.Component {
         return (
             <div>
                 <div className="challenge">
-                    <h3 onClick={()=>this.props.setSelected(this.props.content,this.props.question,this.props.score,this.props.hint)}>
+                    <h3 onClick={()=>this.props.setSelected(this.props.name,this.props.content,this.props.score,this.props.hint)}>
                         {this.props.name}
                     </h3>
                 </div>

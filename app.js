@@ -6,28 +6,29 @@ import Nav from './components/nav'
 import Dashboard from './components/dashboard'
 import Welcome from './components/welcome'
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Route,
   Link
 } from 'react-router-dom'
 class App extends React.Component {
   render () {
-    return <p></p>;
+    return (
+		<span>
+			<Dashboard/>
+		</span>
+	);
   }
 }
 
 ReactDOM.render(
-    <Router>
-       <span>
-       <Nav/>
-       <Dashboard/>
-         <div>
-           <Route exact path="/" component={App}/>
-           <Route path="/login" component={Login}/>
-           <Route path="/index" component={Index}/>
-         </div>
-       </span>
-     </Router>
-    ,
+	<HashRouter>
+		<span>
+			<Nav/>
+			<Route exact path="/" component={Login}/>
+			<Route path="/login" component={Login}/>
+			<Route path="/dashboard" component={Dashboard}/>
+		</span>
+	</HashRouter>
+	,
     document.getElementById('app')
 );
