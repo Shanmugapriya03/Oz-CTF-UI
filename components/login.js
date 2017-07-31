@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import * as constants from '../constants';
 import { Redirect } from 'react-router';
-
+import Nav from './nav';
 class Login extends React.Component{
     constructor(){
         super();
@@ -52,18 +52,21 @@ class Login extends React.Component{
 			return <Redirect push to="/dashboard" />;
  		}
         return (
-            <div className="jumbotron container-fluid">
-				<div className="row">
-					<center className="col-md-6 col-md-offset-3">
-						<h1>Login</h1>
-		                <input type="text" className="form-control" placeholder="enter ozmenta id" onChange={this.setName}/><br />
-		                <input type="password" className="form-control" placeholder="password" onChange={this.setPass}/><br />
-		                <button type="submit" className="btn btn-info" onClick={this.show}>Login</button>
-						{this.showMessage()}
-					</center>
+			<div>
+				<Nav screen="loginScreen"/>
+				<div className="jumbotron container-fluid">
+					<div className="row">
+						<center className="col-md-6 col-md-offset-3">
+							<h1>Login</h1>
+			                <input type="text" className="form-control" placeholder="enter ozmenta id" onChange={this.setName}/><br />
+			                <input type="password" className="form-control" placeholder="password" onChange={this.setPass}/><br />
+			                <button type="submit" className="btn btn-info" onClick={this.show}>Login</button>
+							{this.showMessage()}
+						</center>
+					</div>
 				</div>
-			</div>
-        );
+		</div>
+		);
     }
 }
 

@@ -106,6 +106,9 @@ table,th,tr,thead,tbody,td{
     text-align: center;
 }
 table{
-    background-color:#5675B9; 
+    background-color:#5675B9;
     color: #323754;
+}
+.green {
+	color:green;
 }

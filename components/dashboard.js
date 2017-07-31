@@ -4,6 +4,7 @@ import Timer from './timer';
 import HintItem from './hintItem';
 import axios from 'axios';
 import * as constants from '../constants';
+import Nav from './nav';
 export default class Dashboard extends React.Component{
     constructor(){
         super();
@@ -29,9 +30,10 @@ export default class Dashboard extends React.Component{
                 },
             ],
             selected:null,
-            question:null,
+            currentFlag:null,
             eachScore:null,
-			hints:null
+			hints:null,
+			user:{}
         };
 
         this.renderItems = this.renderItems.bind(this);
@@ -39,6 +41,9 @@ export default class Dashboard extends React.Component{
         this.renderScore = this.renderScore.bind(this);
         this.setSelected = this.setSelected.bind(this);
         this.renderHint= this.renderHint.bind(this);
+		this.setFlag = this.setFlag.bind(this);
+		this.submitFlag = this.submitFlag.bind(this);
+		this.displayTimer = this.displayTimer.bind(this);
     }
     renderHint(){
         var hints=[];
@@ -51,7 +56,7 @@ export default class Dashboard extends React.Component{
     renderItems(){
         var items=[];
         for (let i in this.state.challenges){
-            items.push(<ChallengeItem hint={this.state.challenges[i].hint} name={this.state.challenges[i].name} score={this.state.challenges[i].score} content={this.state.challenges[i].content} question={this.state.challenges[i].question} setSelected={this.setSelected}/>);
+            items.push(<ChallengeItem challenge={this.state.challenges[i]} key={i} index={i} setSelected={this.setSelected}/>);
         }
         return items;
     }
@@ -67,21 +72,65 @@ export default class Dashboard extends React.Component{
 			.catch(function (error) {
 				console.log(error);
 			});
+		axios.get(constants.BASE_URL+'/userDetails')
+			.then(function (response) {
+				console.log(response);
+				if (response.data.Message == "success"){
+					self.setState({user:response.data.Data});
+				}else{
+					alert("please login again to continue");
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				alert("network error please contact admin");
+			});
+
+	}
+	setFlag(e){
+		var val = e.target.value;
+        this.setState({currentFlag: val});
+	}
+	submitFlag(){
+		console.log(this.state);
+		let self = this;
+		let i = this.state.selected;
+        axios.post(constants.BASE_URL+'/submitFlag', {
+			flag:this.state.currentFlag,
+			cid:this.state.challenges[i].ID
+        })
+          .then(function (response) {
+            console.log(response.data);
+			if (response.data.Message == "valid"){
+				let challengesClone = self.state.challenges;
+				let i = self.state.selected;
+				challengesClone[i].Solved = true;
+				self.setState({challenges:challengesClone, message:"valid"});
+			}else{
+				self.setState({message:response.data.Message});
+			}
+		})
+          .catch(function (error) {
+            console.log(error);
+			self.setState({message:"error"});
+        });
 	}
     renderContent(){
         if (this.state.selected != null){
+			let i = this.state.selected;
             return (
                 <div>
                     <div className="heading">
-                        <h1>{this.state.selected} <span className="badge">{this.state.eachScore} pts</span></h1>
+                        <h1>{this.state.challenges[i].name} <span className="badge">{this.state.challenges[i].score} pts</span></h1>
                     </div>
                     <div className="well well-lg question">
-                        <p>{this.state.question}</p>
+                        <p>{this.state.challenges[i].content}</p>
                     </div>
+					{this.showMessage()}
                     <div className="form-group col-lg-10">
-                        <input type="text" className="form-control" placeholder="Enter flag here"></input>
+                        <input type="text" className="form-control" placeholder="Enter flag here" onChange={this.setFlag}></input>
                     </div>
-                    <button type="button" className="btn btn-default btn-primary btn-lg" >submit</button>
+                    <button type="button" className="btn btn-default btn-primary btn-lg" onClick={this.submitFlag}>submit</button>
                 </div>
             );
         }else{
@@ -91,18 +140,32 @@ export default class Dashboard extends React.Component{
 		}
     }
     renderScore(){
-        var tot=0;
+        let myScore = 0, tot = 0;
         for(let i in this.state.challenges){
-            tot+=Number(this.state.challenges[i].score);
+			if (this.state.challenges[i].Solved == true)
+				myScore+=Number(this.state.challenges[i].score);
+			tot+=Number(this.state.challenges[i].score);
         }
-        return tot;
+        return <span>{myScore} / {tot}</span>;
     }
-    setSelected(content, question, score, hint){
-        this.setState({selected:content, question:question, eachScore:score, hints:hint});
+    setSelected(index){
+        this.setState({selected:index, message:null});
     }
+	showMessage(){
+		if (this.state.message != undefined){
+			return <div className="alert alert-info" role="alert"> {this.state.message} </div>
+		}
+	}
+	displayTimer(){
+		if (this.state.user.StartTime != undefined)
+			return <Timer start={this.state.user.StartTime} />
+		else
+			return <span></span>
+	}
     render(){
         return (
             <span>
+				<Nav isLoggedIn={true} />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-2  verNav list-scroll">
@@ -116,15 +179,14 @@ export default class Dashboard extends React.Component{
                         </div>
 
                         <div className="col-md-2">
-                                <Timer/>
+								{this.displayTimer()}
                                 <br/>
-                                <div className="tot">Total Score</div>
+                                <div className="tot">Score</div>
                                 <div className="totscore"> {this.renderScore()}</div>
                                 <br/>
                                 <div className="hints">HINTS
                                 {this.renderHint()}
                                 </div>
-
                         </div>
                     </div>
                 </div>

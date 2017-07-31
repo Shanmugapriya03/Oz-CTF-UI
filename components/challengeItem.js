@@ -2,17 +2,20 @@ import React from 'react';
 
 export default class ChallengeItem extends React.Component {
     render(){
+		let solved = <span>Not solved</span>
+		if (this.props.challenge.Solved == true){
+			solved = <span ><span className="glyphicon glyphicon-star"></span> solved </span>
+		}
         return (
             <div>
                 <div className="challenge">
-                    <h3 onClick={()=>this.props.setSelected(this.props.name,this.props.content,this.props.score,this.props.hint)}>
-                        {this.props.name}
+                    <h3 onClick={()=>this.props.setSelected(this.props.index)}>
+                        {this.props.challenge.name}
                     </h3>
                 </div>
                 <div className="score">
-                    <div className="glyphicon glyphicon-star"></div>
-                    <span>{this.props.score} pts</span>
-                </div>
+					{solved}
+			    </div>
                 <hr/>
             </div>
         );
