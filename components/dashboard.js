@@ -32,7 +32,6 @@ export default class Dashboard extends React.Component{
             selected:null,
             currentFlag:null,
             eachScore:null,
-			hints:null,
 			user:{}
         };
 
@@ -44,12 +43,17 @@ export default class Dashboard extends React.Component{
 		this.setFlag = this.setFlag.bind(this);
 		this.submitFlag = this.submitFlag.bind(this);
 		this.displayTimer = this.displayTimer.bind(this);
+		this.setHint = this.setHint.bind(this);
     }
     renderHint(){
         var hints=[];
-		let val = this.state.hints;
+		let selInd = this.state.selected;
+		if (this.state.challenges[selInd] == undefined)
+			return;
+		let val = this.state.challenges[selInd].hint;
         for(let i in val){
-            hints.push(<HintItem hname={val[i].hname} pointLoss={val[i].pointLoss}/>);
+			console.log(val[i]);
+            hints.push(<HintItem key={i} setHint={this.setHint} hname={val[i].Name} hcontent={val[i].Content}/>);
         }
         return hints;
     }
@@ -151,6 +155,9 @@ export default class Dashboard extends React.Component{
     setSelected(index){
         this.setState({selected:index, message:null});
     }
+	setHint(content){
+		this.setState({message:content});
+	}
 	showMessage(){
 		if (this.state.message != undefined){
 			return <div className="alert alert-info" role="alert"> {this.state.message} </div>

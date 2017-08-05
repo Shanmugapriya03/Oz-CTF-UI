@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 export default class Nav extends React.Component{
     render(){
-		let login = <Link to="/login" className="btn btn-danger navbar-btn">login</Link>;
-		let logout = <Link to="/logout" className="btn btn-danger navbar-btn">logout</Link>;
-		let leaderBoard = <Link to="/leaderBoard" className="btn btn-primary navbar-btn">LeaderBoard</Link>;
+		let login = <Link to="/login" className="btn btn-danger navbar-btn" key={1}>login</Link>;
+		let logout = <Link to="/logout" className="btn btn-danger navbar-btn" key={2}>logout</Link>;
+		let leaderBoard = <Link to="/leaderBoard" className="btn btn-primary navbar-btn" key={3}>LeaderBoard</Link>;
 		let items = [];
 		if (this.props.isLoggedIn == true){
 			items.push(logout);
